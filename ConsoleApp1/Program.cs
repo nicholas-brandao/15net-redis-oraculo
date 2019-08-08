@@ -9,7 +9,7 @@ namespace ConsoleApp1
         {
             //Console.WriteLine("Hello World!");
 
-            ConnectionMultiplexer connection = ConnectionMultiplexer.Connect("40.77.24.62:443");
+            ConnectionMultiplexer connection = ConnectionMultiplexer.Connect("localhost");
 
             //IDatabase db = connection.GetDatabase();
             //// Get/Set
@@ -17,16 +17,13 @@ namespace ConsoleApp1
             //var value = db.StringGet("abc");
 
             var sub = connection.GetSubscriber();
-            
+
             sub.Subscribe("Perguntas", (ch, msg) =>
             {
 
-                if (msg == "Qual a capital do Brasil ?")
-                {
-                    IDatabase redis = connection.GetDatabase();
-                    redis.HashSet("P1", "Nicholas", "Brasilia");
-                }
-               
+                IDatabase redis = connection.GetDatabase();
+                redis.HashSet("P1", "Grupo-Nicholas", "Brasilia");
+
             });
 
             Console.ReadLine();

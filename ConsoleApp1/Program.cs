@@ -9,14 +9,12 @@ namespace ConsoleApp1
         {
             //Console.WriteLine("Hello World!");
 
-            ConnectionMultiplexer connection = ConnectionMultiplexer.Connect("40.77.24.62");
+            ConnectionMultiplexer connection = ConnectionMultiplexer.Connect("40.77.24.62:443");
 
             //IDatabase db = connection.GetDatabase();
             //// Get/Set
             //db.StringSet("abc", "1");
             //var value = db.StringGet("abc");
-
-            var pub = connection.GetSubscriber();
 
             var sub = connection.GetSubscriber();
             
@@ -28,7 +26,7 @@ namespace ConsoleApp1
                     IDatabase redis = connection.GetDatabase();
                     redis.HashSet("P1", "Nicholas", "Brasilia");
                 }
-                Console.WriteLine(msg.ToString());
+               
             });
 
             Console.ReadLine();

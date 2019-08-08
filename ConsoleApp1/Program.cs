@@ -24,7 +24,7 @@ namespace ConsoleApp1
                 string msg2 = msg.ToString();
 
                 IDatabase redis = connection.GetDatabase();
-                redis.HashSet(msg2.Substring(0,2), "Grupo-Nicholas", "Brasilia");
+                redis.HashSet(msg2.Substring(0,2), "Grupo-Nicholas-Luan-Andre-Wallace-Gerson", "Brasilia");
 
             });
 
